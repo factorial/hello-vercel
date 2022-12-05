@@ -57,6 +57,7 @@ export default async function get_email(req, res) {
    //debug here, delete this stuff:
    if (!req.body || !req.body["prompt"]) {
       req["body"] = { "prompt": "You will need to provide some text." };
+      console.log("debug: set up that fake prompt");
    }
    //debug there, delete the stuff above^
    
