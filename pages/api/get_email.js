@@ -62,7 +62,9 @@ export default async function get_email(req, res) {
    
    const completion = await openai.createCompletion({
       "prompt": mailworks_prompt_text + req.body["prompt"],
-      "model": "text-davinci-002"
+      "model": "text-davinci-002",
+      "max_tokens": 1000,
+      "temperature": 0.7
    });
 
 
