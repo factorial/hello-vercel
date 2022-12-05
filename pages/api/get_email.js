@@ -26,7 +26,7 @@ export default async function get_email(req, res) {
 
    // Steps
    // 1. check user in request is signed in. bail if not.
-   let user_is_signed_in = check_user_is_signed_in();
+   const user_is_signed_in = check_user_is_signed_in();
    if (!user_is_signed_in) {
       rescode = 401;
       resobj = {
@@ -40,7 +40,7 @@ export default async function get_email(req, res) {
    }
 
    // 2. check signed-in user is not rate-limited from prior use. bail if not.
-   let user_is_rate_limited = check_user_is_rate_limited();
+   const user_is_rate_limited = check_user_is_rate_limited();
    if (user_is_rate_limited) {
       rescode = 403;
       resobj = {
@@ -59,7 +59,7 @@ export default async function get_email(req, res) {
       req["body"] = { "prompt": "You will need to provide some text." };
    }
    rescode = 200;
-   resobject = {
+   resobj = {
       "text": "seems to work."
    }
    return res.status(rescode).json(resobj);
@@ -77,7 +77,7 @@ export default async function get_email(req, res) {
 
    // 6. Respond to the caller with the completion
    rescode = 200;
-   resobject = {
+   resobj = {
       "email_text": rescodecompletion.data.choices[0].text
    }
    res.status(rescode).json(resobj);
