@@ -63,7 +63,7 @@ export default async function get_email(req, res) {
    
    const completion = await openai.createCompletion({
       "prompt": req.body["prompt"],
-      "model": "text-davinci-003"
+      "model": "text-davinci-002"
    });
 
 
