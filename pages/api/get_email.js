@@ -19,7 +19,7 @@ function check_user_is_rate_limited(user) {
 }
 
 
-export default function get_email(req, res) {
+export default async function get_email(req, res) {
    let resobj = {};
    let rescode = 200;
 
