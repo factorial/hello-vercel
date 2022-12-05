@@ -23,9 +23,10 @@ export default async function get_email(req, res) {
    let resobj = {};
    let rescode = 200;
 
+
    // Steps
    // 1. check user in request is signed in. bail if not.
-   user_is_signed_in = check_user_is_signed_in();
+   let user_is_signed_in = check_user_is_signed_in();
    if (!user_is_signed_in) {
       rescode = 401;
       resobj = {
@@ -39,7 +40,7 @@ export default async function get_email(req, res) {
    }
 
    // 2. check signed-in user is not rate-limited from prior use. bail if not.
-   user_is_rate_limited = check_user_is_rate_limited();
+   let user_is_rate_limited = check_user_is_rate_limited();
    if (user_is_rate_limited) {
       rescode = 403;
       resobj = {
