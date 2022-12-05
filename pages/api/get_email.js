@@ -58,12 +58,6 @@ export default async function get_email(req, res) {
    if (!req.body || !req.body["prompt"]) {
       req["body"] = { "prompt": "You will need to provide some text." };
    }
-   rescode = 200;
-   resobj = {
-      "text": "seems to work."
-   }
-   return res.status(rescode).json(resobj);
-
    //debug there, delete the stuff above^
    
    const completion = await openai.createCompletion({
