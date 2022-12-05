@@ -6,7 +6,7 @@ const openai_configuration = new Configuration({
 });
 const openai = new OpenAIApi(openai_configuration);
 
-
+const mailworks_prompt_text = "Create a three paragraph professional email with a salutation, with a conclusion, saying:";
 
 function check_user_is_signed_in(user) {
    // todo. currently always signed in
@@ -56,13 +56,12 @@ export default async function get_email(req, res) {
    // 3. make request to complete whatever was sent in request body JSON object parameter "prompt"
    //debug here, delete this stuff:
    if (!req.body || !req.body["prompt"]) {
-      req["body"] = { "prompt": "You will need to provide some text." };
-      console.log("debug: set up that fake prompt");
+      req["body"] = { "prompt": "nothing" };
    }
    //debug there, delete the stuff above^
    
    const completion = await openai.createCompletion({
-      "prompt": req.body["prompt"],
+      "prompt": mailworks_prompt_text + req.body["prompt"],
       "model": "text-davinci-002"
    });
 
