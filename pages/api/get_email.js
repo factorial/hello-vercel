@@ -73,7 +73,7 @@ export default async function get_email(req, res) {
    // 6. Respond to the caller with the completion
    rescode = 200;
    resobj = {
-      "email_text": rescodecompletion.data.choices[0].text
+      "email_text": completion.data.choices[0].text
    }
    res.status(rescode).json(resobj);
 }
